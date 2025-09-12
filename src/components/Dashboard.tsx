@@ -42,7 +42,7 @@ export const Dashboard = () => {
         {/* Hero Section */}
         <div className="text-center mb-12 animate-fade-in">
           <h1 className="text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
-            AgriBot Control Panel
+            Grevo Control Panel
           </h1>
           <p className="text-xl text-muted-foreground mb-6">
             Monitor and Control Your Smart Farming Robot

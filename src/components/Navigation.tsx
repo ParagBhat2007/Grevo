@@ -40,7 +40,7 @@ export const Navigation = ({ activeSection, onSectionChange }: NavigationProps) 
                 <Leaf className="h-5 w-5 text-primary-foreground" />
               </div>
               <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                AgriBot
+                Grevo
               </span>
               <Badge className="glass bg-primary/20 text-primary border-primary/30 text-xs ml-2">
                 v2.1
