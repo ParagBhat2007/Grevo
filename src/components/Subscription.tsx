@@ -47,7 +47,7 @@ export const Subscription = () => {
     },
     premium: {
       monthly: 2499,
-      yearly: 25999,
+      yearly: 27999,
     },
   };
 
