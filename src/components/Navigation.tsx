@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { LanguageSelector } from '@/components/LanguageSelector';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   LayoutDashboard, 
   Gamepad2, 
   ScrollText, 
   Menu,
   X,
-  Leaf
+  Leaf,
+  CreditCard
 } from 'lucide-react';
 
 interface NavigationProps {
@@ -17,11 +20,13 @@ interface NavigationProps {
 
 export const Navigation = ({ activeSection, onSectionChange }: NavigationProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   const navItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { id: 'controls', label: 'Controls', icon: Gamepad2 },
-    { id: 'logs', label: 'Logs', icon: ScrollText },
+    { id: 'dashboard', label: t('nav.dashboard'), icon: LayoutDashboard },
+    { id: 'controls', label: t('nav.controls'), icon: Gamepad2 },
+    { id: 'logs', label: t('nav.logs'), icon: ScrollText },
+    { id: 'subscription', label: t('nav.subscription'), icon: CreditCard },
   ];
 
   const toggleMobileMenu = () => {
@@ -68,6 +73,7 @@ export const Navigation = ({ activeSection, onSectionChange }: NavigationProps) 
                   </Button>
                 );
               })}
+              <LanguageSelector />
             </div>
 
             {/* Mobile Menu Button */}

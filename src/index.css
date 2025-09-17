@@ -2,71 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
-/* AgriBot Control Panel Design System - All colors MUST be HSL */
+/* Grevo Light Plant Theme Design System - All colors MUST be HSL */
 
 @layer base {
   :root {
-    /* Base colors */
-    --background: 222 84% 5%;
-    --foreground: 210 40% 98%;
+    /* Base colors - Light nature theme */
+    --background: 120 40% 98%;
+    --foreground: 142 30% 15%;
 
     /* Card and surface colors */
-    --card: 222 84% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 120 20% 95%;
+    --card-foreground: 142 30% 15%;
 
-    --popover: 222 84% 8%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 120 20% 95%;
+    --popover-foreground: 142 30% 15%;
 
-    /* Primary - AgriBot Green */
+    /* Primary - Fresh Green */
     --primary: 142 71% 45%;
-    --primary-foreground: 210 40% 98%;
+    --primary-foreground: 120 40% 98%;
     --primary-glow: 142 71% 55%;
 
-    /* Secondary - Deep Green */
-    --secondary: 142 50% 15%;
-    --secondary-foreground: 210 40% 98%;
+    /* Secondary - Sage Green */
+    --secondary: 142 25% 75%;
+    --secondary-foreground: 142 30% 15%;
 
-    /* Accent - Cyan Blue */
-    --accent: 199 89% 48%;
-    --accent-foreground: 210 40% 98%;
-    --accent-glow: 199 89% 58%;
+    /* Accent - Nature Blue */
+    --accent: 199 60% 40%;
+    --accent-foreground: 120 40% 98%;
+    --accent-glow: 199 60% 50%;
 
-    /* Warning - Yellow */
-    --warning: 48 96% 53%;
-    --warning-foreground: 222 84% 5%;
+    /* Warning - Golden Yellow */
+    --warning: 45 93% 47%;
+    --warning-foreground: 142 30% 15%;
 
     /* Muted colors */
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 120 15% 85%;
+    --muted-foreground: 142 20% 45%;
 
-    /* Destructive - Red */
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive - Natural Red */
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 120 40% 98%;
 
     /* Borders and inputs */
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
+    --border: 120 15% 85%;
+    --input: 120 20% 90%;
     --ring: 142 71% 45%;
 
     /* Layout */
     --radius: 0.75rem;
 
-    /* Custom gradients */
+    /* Custom gradients - Light nature theme */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
     --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-glow)));
-    --gradient-dark: linear-gradient(180deg, hsl(222 84% 5%), hsl(222 84% 3%));
+    --gradient-light: linear-gradient(180deg, hsl(120 40% 98%), hsl(120 30% 95%));
+    --gradient-nature: linear-gradient(135deg, hsl(142 71% 45%), hsl(199 60% 40%));
     
-    /* Glassmorphism */
-    --glass-bg: 210 40% 98% / 0.05;
-    --glass-border: 210 40% 98% / 0.1;
+    /* Glassmorphism - Light theme */
+    --glass-bg: 120 40% 98% / 0.8;
+    --glass-border: 142 30% 15% / 0.1;
     
-    /* Shadows and glows */
-    --shadow-glow: 0 0 20px hsl(var(--primary) / 0.3);
-    --shadow-accent-glow: 0 0 20px hsl(var(--accent) / 0.3);
-    --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.3);
+    /* Shadows and glows - Light theme */
+    --shadow-glow: 0 0 20px hsl(var(--primary) / 0.2);
+    --shadow-accent-glow: 0 0 20px hsl(var(--accent) / 0.2);
+    --shadow-glass: 0 8px 32px hsl(142 30% 15% / 0.1);
 
-    /* Grid animation */
-    --grid-color: 210 40% 98% / 0.03;
+    /* Grid animation - Light theme */
+    --grid-color: 142 30% 15% / 0.05;
 
     --sidebar-background: 0 0% 98%;
 
@@ -95,7 +96,7 @@
 
   body {
     @apply bg-background text-foreground font-inter overflow-x-hidden;
-    background: var(--gradient-dark);
+    background: var(--gradient-light);
   }
 
   /* Animated Grid Background */

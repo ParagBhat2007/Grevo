@@ -3,6 +3,8 @@ import { Navigation } from '@/components/Navigation';
 import { Dashboard } from '@/components/Dashboard';
 import { Controls } from '@/components/Controls';
 import { Logs } from '@/components/Logs';
+import { Subscription } from '@/components/Subscription';
+import { LanguageProvider } from '@/contexts/LanguageContext';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('dashboard');
@@ -15,13 +17,16 @@ const Index = () => {
         return <Controls />;
       case 'logs':
         return <Logs />;
+      case 'subscription':
+        return <Subscription />;
       default:
         return <Dashboard />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-dark">
+    <LanguageProvider>
+    <div className="min-h-screen bg-gradient-light">
       <Navigation 
         activeSection={activeSection} 
         onSectionChange={setActiveSection} 
@@ -44,6 +49,7 @@ const Index = () => {
         </div>
       </footer>
     </div>
+    </LanguageProvider>
   );
 };
 
