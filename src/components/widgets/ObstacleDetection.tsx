@@ -12,18 +12,18 @@ export const ObstacleDetection = ({ distance }: ObstacleDetectionProps) => {
   const safetyPercentage = Math.min((distance / 50) * 100, 100);
 
   return (
-    <Card className="glass glass-hover p-6">
+    <Card className="glass glass-hover widget-glow animate-fade-in p-6">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-semibold">Obstacle Detection</h3>
-        <Radar className={`h-5 w-5 ${isObstacleDetected ? 'text-destructive' : 'text-primary'}`} />
+        <Radar className={`h-5 w-5 ${isObstacleDetected ? 'text-destructive animate-pulse' : 'text-primary'}`} />
       </div>
       
       <div className="space-y-4">
         <div className="text-center">
-          <div className={`text-3xl font-bold ${
-            isObstacleDetected ? 'text-destructive' : 'text-primary'
+          <div className={`text-3xl font-bold animate-scale-in ${
+            isObstacleDetected ? 'text-destructive animate-pulse' : 'text-primary'
           }`}>
-            {distance}
+            {distance.toFixed(3)}
           </div>
           <div className="text-sm text-muted-foreground">cm</div>
         </div>

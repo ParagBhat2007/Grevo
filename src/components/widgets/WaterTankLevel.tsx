@@ -11,10 +11,10 @@ export const WaterTankLevel = ({ level }: WaterTankLevelProps) => {
   const fillPercentage = isOk ? 75 : 10;
 
   return (
-    <Card className="glass glass-hover p-6">
+    <Card className="glass glass-hover widget-glow animate-fade-in p-6">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-semibold">Water Tank Level</h3>
-        <Droplet className={`h-5 w-5 ${isOk ? 'text-accent' : 'text-destructive'}`} />
+        <Droplet className={`h-5 w-5 ${isOk ? 'text-accent animate-bounce-subtle' : 'text-destructive animate-pulse'}`} />
       </div>
       
       <div className="space-y-4">

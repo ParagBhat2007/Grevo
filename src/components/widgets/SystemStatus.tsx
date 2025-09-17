@@ -33,10 +33,10 @@ export const SystemStatus = ({ status }: SystemStatusProps) => {
   ];
 
   return (
-    <Card className="glass glass-hover p-6">
+    <Card className="glass glass-hover widget-glow animate-fade-in p-6">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-semibold">System Status</h3>
-        <Settings className="h-5 w-5 text-muted-foreground" />
+        <Settings className="h-5 w-5 text-muted-foreground animate-bounce-subtle" />
       </div>
       
       <div className="space-y-3">

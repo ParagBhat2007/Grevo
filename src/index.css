@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Grevo Light Plant Theme Design System - All colors MUST be HSL */
+/* Grevo Dual Theme Design System - All colors MUST be HSL */
 
 @layer base {
   :root {
-    /* Base colors - Light nature theme */
+    /* Light Theme - Base colors */
     --background: 120 40% 98%;
     --foreground: 142 30% 15%;
 
@@ -51,42 +51,86 @@
     /* Layout */
     --radius: 0.75rem;
 
-    /* Custom gradients - Light nature theme */
+    /* Custom gradients - Light theme */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
     --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-glow)));
     --gradient-light: linear-gradient(180deg, hsl(120 40% 98%), hsl(120 30% 95%));
     --gradient-nature: linear-gradient(135deg, hsl(142 71% 45%), hsl(199 60% 40%));
     
     /* Glassmorphism - Light theme */
-    --glass-bg: 120 40% 98% / 0.8;
-    --glass-border: 142 30% 15% / 0.1;
+    --glass-bg: 120 40% 98% / 0.9;
+    --glass-border: 142 30% 15% / 0.15;
     
     /* Shadows and glows - Light theme */
-    --shadow-glow: 0 0 20px hsl(var(--primary) / 0.2);
-    --shadow-accent-glow: 0 0 20px hsl(var(--accent) / 0.2);
-    --shadow-glass: 0 8px 32px hsl(142 30% 15% / 0.1);
+    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.3);
+    --shadow-accent-glow: 0 0 30px hsl(var(--accent) / 0.3);
+    --shadow-glass: 0 12px 40px hsl(142 30% 15% / 0.15);
 
     /* Grid animation - Light theme */
-    --grid-color: 142 30% 15% / 0.05;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --grid-color: 142 30% 15% / 0.08;
   }
 
-  /* Dark mode is default - no overrides needed */
+  .dark {
+    /* Dark Theme - Base colors */
+    --background: 222 84% 5%;
+    --foreground: 210 40% 98%;
+
+    /* Card and surface colors */
+    --card: 222 84% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 84% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary - Bright Green */
+    --primary: 142 71% 50%;
+    --primary-foreground: 222 84% 5%;
+    --primary-glow: 142 71% 60%;
+
+    /* Secondary - Deep Green */
+    --secondary: 142 50% 20%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Accent - Cyan Blue */
+    --accent: 199 89% 55%;
+    --accent-foreground: 222 84% 5%;
+    --accent-glow: 199 89% 65%;
+
+    /* Warning - Bright Yellow */
+    --warning: 48 96% 60%;
+    --warning-foreground: 222 84% 5%;
+
+    /* Muted colors */
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Destructive - Bright Red */
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Borders and inputs */
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 142 71% 50%;
+
+    /* Custom gradients - Dark theme */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-glow)));
+    --gradient-light: linear-gradient(180deg, hsl(222 84% 5%), hsl(222 84% 3%));
+    --gradient-nature: linear-gradient(135deg, hsl(142 71% 50%), hsl(199 89% 55%));
+    
+    /* Glassmorphism - Dark theme */
+    --glass-bg: 210 40% 98% / 0.08;
+    --glass-border: 210 40% 98% / 0.15;
+    
+    /* Shadows and glows - Dark theme */
+    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.4);
+    --shadow-accent-glow: 0 0 30px hsl(var(--accent) / 0.4);
+    --shadow-glass: 0 12px 40px hsl(0 0% 0% / 0.3);
+
+    /* Grid animation - Dark theme */
+    --grid-color: 210 40% 98% / 0.05;
+  }
 }
 
 @layer base {
@@ -113,23 +157,51 @@
     100% { background-position: 50px 50px; }
   }
 
-  /* Glassmorphism utility classes */
+  /* Enhanced Glassmorphism utility classes */
   .glass {
     background: hsl(var(--glass-bg));
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px) saturate(180%);
     border: 1px solid hsl(var(--glass-border));
     box-shadow: var(--shadow-glass);
+    position: relative;
+  }
+
+  .glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(var(--glass-border)), transparent, hsl(var(--glass-border)));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    z-index: -1;
   }
 
   .glass-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .glass-hover:hover {
-    background: hsl(var(--glass-bg) / 0.1);
-    border-color: hsl(var(--glass-border) / 0.2);
-    transform: translateY(-2px) scale(1.02);
+    background: hsl(var(--glass-bg) / 1.2);
+    border-color: hsl(var(--glass-border) / 0.3);
+    transform: translateY(-4px) scale(1.03);
     box-shadow: var(--shadow-glass), var(--shadow-glow);
+  }
+
+  /* Enhanced widget styles */
+  .widget-glow {
+    box-shadow: 
+      0 0 20px hsl(var(--primary) / 0.1),
+      0 8px 32px hsl(var(--primary) / 0.15),
+      inset 0 1px 0 hsl(var(--glass-border));
+  }
+
+  .widget-glow:hover {
+    box-shadow: 
+      0 0 30px hsl(var(--primary) / 0.2),
+      0 12px 40px hsl(var(--primary) / 0.25),
+      inset 0 1px 0 hsl(var(--glass-border));
   }
 
   /* Glow effects */

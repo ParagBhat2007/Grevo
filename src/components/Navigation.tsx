@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { LanguageSelector } from '@/components/LanguageSelector';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   LayoutDashboard, 
@@ -62,9 +63,9 @@ export const Navigation = ({ activeSection, onSectionChange }: NavigationProps) 
                   <Button
                     key={item.id}
                     onClick={() => onSectionChange(item.id)}
-                    className={`glass glass-hover transition-smooth ${
+                    className={`glass glass-hover transition-smooth animate-fade-in ${
                       isActive
-                        ? 'bg-primary/20 text-primary border-primary/30 glow-primary'
+                        ? 'bg-primary/20 text-primary border-primary/30 glow-primary widget-glow'
                         : 'bg-muted/10 text-muted-foreground border-muted/20 hover:bg-primary/10 hover:text-primary'
                     }`}
                   >
@@ -73,7 +74,10 @@ export const Navigation = ({ activeSection, onSectionChange }: NavigationProps) 
                   </Button>
                 );
               })}
-              <LanguageSelector />
+              <div className="flex items-center gap-2">
+                <LanguageSelector />
+                <ThemeToggle />
+              </div>
             </div>
 
             {/* Mobile Menu Button */}
@@ -91,30 +95,34 @@ export const Navigation = ({ activeSection, onSectionChange }: NavigationProps) 
       {isMobileMenuOpen && (
         <div className="md:hidden fixed inset-0 z-40 bg-background/80 backdrop-blur-sm">
           <div className="fixed top-16 left-0 right-0 glass border-b border-muted/20 p-4">
-            <div className="space-y-2">
-              {navItems.map((item) => {
-                const Icon = item.icon;
-                const isActive = activeSection === item.id;
-                
-                return (
-                  <Button
-                    key={item.id}
-                    onClick={() => {
-                      onSectionChange(item.id);
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className={`w-full justify-start glass glass-hover transition-smooth ${
-                      isActive
-                        ? 'bg-primary/20 text-primary border-primary/30 glow-primary'
-                        : 'bg-muted/10 text-muted-foreground border-muted/20 hover:bg-primary/10 hover:text-primary'
-                    }`}
-                  >
-                    <Icon className="h-4 w-4 mr-2" />
-                    {item.label}
-                  </Button>
-                );
-              })}
-            </div>
+              <div className="space-y-2">
+                {navItems.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = activeSection === item.id;
+                  
+                  return (
+                    <Button
+                      key={item.id}
+                      onClick={() => {
+                        onSectionChange(item.id);
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className={`w-full justify-start glass glass-hover transition-smooth animate-fade-in ${
+                        isActive
+                          ? 'bg-primary/20 text-primary border-primary/30 glow-primary widget-glow'
+                          : 'bg-muted/10 text-muted-foreground border-muted/20 hover:bg-primary/10 hover:text-primary'
+                      }`}
+                    >
+                      <Icon className="h-4 w-4 mr-2" />
+                      {item.label}
+                    </Button>
+                  );
+                })}
+                <div className="flex items-center gap-2 mt-4">
+                  <LanguageSelector />
+                  <ThemeToggle />
+                </div>
+              </div>
           </div>
         </div>
       )}

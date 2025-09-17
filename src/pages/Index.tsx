@@ -5,6 +5,7 @@ import { Controls } from '@/components/Controls';
 import { Logs } from '@/components/Logs';
 import { Subscription } from '@/components/Subscription';
 import { LanguageProvider } from '@/contexts/LanguageContext';
+import { ThemeProvider } from '@/contexts/ThemeContext';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('dashboard');
@@ -25,7 +26,8 @@ const Index = () => {
   };
 
   return (
-    <LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
     <div className="min-h-screen bg-gradient-light">
       <Navigation 
         activeSection={activeSection} 
@@ -49,7 +51,8 @@ const Index = () => {
         </div>
       </footer>
     </div>
-    </LanguageProvider>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 };
 

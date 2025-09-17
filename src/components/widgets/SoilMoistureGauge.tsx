@@ -20,16 +20,16 @@ export const SoilMoistureGauge = ({ value }: SoilMoistureGaugeProps) => {
   };
 
   return (
-    <Card className="glass glass-hover p-6">
+    <Card className="glass glass-hover widget-glow animate-fade-in p-6">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-semibold">Soil Moisture</h3>
-        <Droplets className={`h-5 w-5 ${getStatusColor()}`} />
+        <Droplets className={`h-5 w-5 ${getStatusColor()} animate-pulse`} />
       </div>
       
       <div className="space-y-4">
         <div className="text-center">
-          <div className={`text-3xl font-bold ${getStatusColor()}`}>
-            {value}
+          <div className={`text-3xl font-bold ${getStatusColor()} animate-scale-in`}>
+            {value.toFixed(3)}
           </div>
           <div className="text-sm text-muted-foreground">/1023</div>
         </div>
