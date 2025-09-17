@@ -42,7 +42,7 @@ const Index = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="text-center">
             <p className="text-sm text-muted-foreground">
-              © 2025 Grevo - Made by for SIH 2025 By Team CropCorp
+              © 2025 Grevo - Made for SIH 2025 By Team CropCorp
             </p>
             <div className="mt-2 text-xs text-muted-foreground/70">
               Powered by Raspberry Pi • Real-time IoT Dashboard
