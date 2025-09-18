@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { TrendingUp } from 'lucide-react';
 
 interface MoistureData {
@@ -9,6 +10,7 @@ interface MoistureData {
 }
 
 export const MoistureChart = () => {
+  const { t } = useLanguage();
   const [data, setData] = useState<MoistureData[]>([]);
 
   useEffect(() => {
@@ -54,9 +56,9 @@ export const MoistureChart = () => {
     <Card className="glass glass-hover p-6 animate-scale-in">
       <div className="flex items-center gap-2 mb-6">
         <TrendingUp className="h-5 w-5 text-accent" />
-        <h3 className="text-xl font-semibold">Moisture History</h3>
+        <h3 className="text-xl font-semibold">{t('widgets.moisture.title')}</h3>
         <div className="ml-auto text-sm text-muted-foreground">
-          Live updates every 2s
+          {t('widgets.moisture.liveUpdates')}
         </div>
       </div>
       
@@ -95,8 +97,8 @@ export const MoistureChart = () => {
       </div>
       
       <div className="mt-4 flex justify-between text-sm text-muted-foreground">
-        <span>Range: 0-1023</span>
-        <span>Current: {data[data.length - 1]?.moisture.toFixed(0) || 0}</span>
+        <span>{t('widgets.moisture.range')}</span>
+        <span>{t('widgets.moisture.current')}: {data[data.length - 1]?.moisture.toFixed(0) || 0}</span>
       </div>
     </Card>
   );

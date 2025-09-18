@@ -1,4 +1,5 @@
 import { Card } from '@/components/ui/card';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Droplets } from 'lucide-react';
 
 interface SoilMoistureGaugeProps {
@@ -6,6 +7,7 @@ interface SoilMoistureGaugeProps {
 }
 
 export const SoilMoistureGauge = ({ value }: SoilMoistureGaugeProps) => {
+  const { t } = useLanguage();
   const percentage = (value / 1023) * 100;
   const getStatusColor = () => {
     if (percentage < 30) return 'text-destructive';
@@ -14,15 +16,15 @@ export const SoilMoistureGauge = ({ value }: SoilMoistureGaugeProps) => {
   };
 
   const getStatusText = () => {
-    if (percentage < 30) return 'Dry';
-    if (percentage < 60) return 'Moderate';
-    return 'Moist';
+    if (percentage < 30) return t('widgets.soilMoisture.dry');
+    if (percentage < 60) return t('widgets.soilMoisture.moderate');
+    return t('widgets.soilMoisture.moist');
   };
 
   return (
     <Card className="glass glass-hover widget-glow animate-fade-in p-6">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold">Soil Moisture</h3>
+        <h3 className="text-lg font-semibold">{t('widgets.soilMoisture.title')}</h3>
         <Droplets className={`h-5 w-5 ${getStatusColor()} animate-pulse`} />
       </div>
       

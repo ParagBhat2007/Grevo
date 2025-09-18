@@ -1,5 +1,6 @@
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Droplet, AlertTriangle } from 'lucide-react';
 
 interface WaterTankLevelProps {
@@ -7,13 +8,14 @@ interface WaterTankLevelProps {
 }
 
 export const WaterTankLevel = ({ level }: WaterTankLevelProps) => {
+  const { t } = useLanguage();
   const isOk = level === 'OK';
   const fillPercentage = isOk ? 75 : 10;
 
   return (
     <Card className="glass glass-hover widget-glow animate-fade-in p-6">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold">Water Tank Level</h3>
+        <h3 className="text-lg font-semibold">{t('widgets.waterTank.title')}</h3>
         <Droplet className={`h-5 w-5 ${isOk ? 'text-accent animate-bounce-subtle' : 'text-destructive animate-pulse'}`} />
       </div>
       
@@ -44,12 +46,12 @@ export const WaterTankLevel = ({ level }: WaterTankLevelProps) => {
             {isOk ? (
               <>
                 <Droplet className="h-3 w-3 mr-1" />
-                Tank OK
+                {t('widgets.waterTank.ok')}
               </>
             ) : (
               <>
                 <AlertTriangle className="h-3 w-3 mr-1" />
-                Tank Empty
+                {t('widgets.waterTank.empty')}
               </>
             )}
           </Badge>
@@ -57,7 +59,7 @@ export const WaterTankLevel = ({ level }: WaterTankLevelProps) => {
         
         {!isOk && (
           <div className="text-center text-xs text-destructive animate-pulse">
-            Refill required!
+            {t('widgets.waterTank.refill')}
           </div>
         )}
       </div>

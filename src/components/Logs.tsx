@@ -3,6 +3,7 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Terminal, Download, Trash2, Play } from 'lucide-react';
 
 interface LogEntry {
@@ -13,36 +14,37 @@ interface LogEntry {
 }
 
 export const Logs = () => {
+  const { t } = useLanguage();
   const [logs, setLogs] = useState<LogEntry[]>([
     {
       id: 1,
       timestamp: new Date().toLocaleTimeString(),
       level: 'success',
-      message: 'System initialized successfully'
+      message: t('logs.systemInit')
     },
     {
       id: 2,
       timestamp: new Date().toLocaleTimeString(),
       level: 'info',
-      message: 'Connected to Raspberry Pi via WiFi'
+      message: t('logs.connected')
     },
     {
       id: 3,
       timestamp: new Date().toLocaleTimeString(),
       level: 'info',
-      message: 'Sensor calibration complete'
+      message: t('logs.calibration')
     },
     {
       id: 4,
       timestamp: new Date().toLocaleTimeString(),
       level: 'warning',
-      message: 'Obstacle detected at 15cm → Motors stopped'
+      message: t('logs.obstacleDetected')
     },
     {
       id: 5,
       timestamp: new Date().toLocaleTimeString(),
       level: 'error',
-      message: 'Warning: Water tank is empty - refill required'
+      message: t('logs.tankEmpty')
     }
   ]);
   
@@ -126,10 +128,10 @@ export const Logs = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-8 animate-fade-in">
           <h2 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
-            System Logs
+            {t('logs.title')}
           </h2>
           <p className="text-xl text-muted-foreground">
-            Real-time monitoring of AgriBot activities and system events
+            {t('logs.subtitle')}
           </p>
         </div>
 
@@ -138,9 +140,9 @@ export const Logs = () => {
           <div className="flex items-center justify-between p-4 border-b border-muted/20">
             <div className="flex items-center gap-2">
               <Terminal className="h-5 w-5 text-primary" />
-              <h3 className="text-lg font-semibold">System Log</h3>
+              <h3 className="text-lg font-semibold">{t('logs.systemLog')}</h3>
               <Badge className={`glass ${isLive ? 'bg-primary/20 text-primary border-primary/30 animate-pulse' : 'bg-muted/20 text-muted-foreground border-muted/30'}`}>
-                {isLive ? 'LIVE' : 'PAUSED'}
+                {isLive ? t('logs.live') : t('logs.paused')}
               </Badge>
             </div>
             
@@ -155,7 +157,7 @@ export const Logs = () => {
                 }`}
               >
                 <Play className="h-4 w-4 mr-1" />
-                {isLive ? 'Pause' : 'Resume'}
+                {isLive ? t('logs.pause') : t('logs.resume')}
               </Button>
               
               <Button
@@ -164,7 +166,7 @@ export const Logs = () => {
                 className="glass glass-hover bg-accent/20 text-accent border-accent/30"
               >
                 <Download className="h-4 w-4 mr-1" />
-                Export
+                {t('logs.export')}
               </Button>
               
               <Button
@@ -173,7 +175,7 @@ export const Logs = () => {
                 className="glass glass-hover bg-destructive/20 text-destructive border-destructive/30"
               >
                 <Trash2 className="h-4 w-4 mr-1" />
-                Clear
+                {t('logs.clear')}
               </Button>
             </div>
           </div>
@@ -183,7 +185,7 @@ export const Logs = () => {
             <div className="space-y-2 font-mono text-sm">
               {logs.length === 0 ? (
                 <div className="text-center text-muted-foreground py-8">
-                  No logs available. System events will appear here.
+                  {t('logs.noLogs')}
                 </div>
               ) : (
                 logs.map((log) => (
@@ -210,8 +212,8 @@ export const Logs = () => {
 
           {/* Log Footer */}
           <div className="flex items-center justify-between p-4 border-t border-muted/20 text-sm text-muted-foreground">
-            <span>{logs.length} log entries</span>
-            <span>Auto-scroll enabled</span>
+            <span>{logs.length} {t('logs.entries')}</span>
+            <span>{t('logs.autoScroll')}</span>
           </div>
         </Card>
       </div>

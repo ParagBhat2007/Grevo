@@ -5,9 +5,11 @@ import { SoilMoistureGauge } from './widgets/SoilMoistureGauge';
 import { WaterTankLevel } from './widgets/WaterTankLevel';
 import { ObstacleDetection } from './widgets/ObstacleDetection';
 import { SystemStatus } from './widgets/SystemStatus';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Wifi, Activity } from 'lucide-react';
 
 export const Dashboard = () => {
+  const { t } = useLanguage();
   const [moistureValue, setMoistureValue] = useState(650);
   const [waterLevel, setWaterLevel] = useState<'OK' | 'EMPTY'>('OK');
   const [obstacleDistance, setObstacleDistance] = useState(45);
@@ -42,19 +44,19 @@ export const Dashboard = () => {
         {/* Hero Section */}
         <div className="text-center mb-12 animate-fade-in">
           <h1 className="text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
-            Grevo Control Panel
+            {t('dashboard.title')}
           </h1>
           <p className="text-xl text-muted-foreground mb-6">
-            Monitor and Control Your Smart Farming Robot
+            {t('dashboard.subtitle')}
           </p>
           <div className="flex items-center justify-center gap-2">
             <Badge className="glass glass-hover bg-primary/20 text-primary border-primary/30 px-4 py-2 animate-pulse-glow">
               <Wifi className="h-4 w-4 mr-2" />
-              Raspberry Pi Connected
+              {t('dashboard.status')}
             </Badge>
             <Badge className="glass glass-hover bg-accent/20 text-accent border-accent/30 px-4 py-2">
               <Activity className="h-4 w-4 mr-2" />
-              System Active
+              {t('dashboard.systemActive')}
             </Badge>
           </div>
         </div>
@@ -81,17 +83,17 @@ export const Dashboard = () => {
         {/* Quick Stats Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
           <Card className="glass glass-hover p-6 text-center">
-            <h3 className="text-sm font-medium text-muted-foreground mb-2">Plants Watered Today</h3>
+            <h3 className="text-sm font-medium text-muted-foreground mb-2">{t('dashboard.plantsWatered')}</h3>
             <p className="text-3xl font-bold text-primary">24</p>
           </Card>
           
           <Card className="glass glass-hover p-6 text-center">
-            <h3 className="text-sm font-medium text-muted-foreground mb-2">Weeds Removed</h3>
+            <h3 className="text-sm font-medium text-muted-foreground mb-2">{t('dashboard.weedsRemoved')}</h3>
             <p className="text-3xl font-bold text-accent">8</p>
           </Card>
           
           <Card className="glass glass-hover p-6 text-center">
-            <h3 className="text-sm font-medium text-muted-foreground mb-2">Hours Active</h3>
+            <h3 className="text-sm font-medium text-muted-foreground mb-2">{t('dashboard.hoursActive')}</h3>
             <p className="text-3xl font-bold text-warning">6.5</p>
           </Card>
         </div>

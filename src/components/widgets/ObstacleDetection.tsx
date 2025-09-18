@@ -1,5 +1,6 @@
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Radar, AlertCircle, CheckCircle } from 'lucide-react';
 
 interface ObstacleDetectionProps {
@@ -7,6 +8,7 @@ interface ObstacleDetectionProps {
 }
 
 export const ObstacleDetection = ({ distance }: ObstacleDetectionProps) => {
+  const { t } = useLanguage();
   const threshold = 20;
   const isObstacleDetected = distance < threshold;
   const safetyPercentage = Math.min((distance / 50) * 100, 100);
@@ -14,7 +16,7 @@ export const ObstacleDetection = ({ distance }: ObstacleDetectionProps) => {
   return (
     <Card className="glass glass-hover widget-glow animate-fade-in p-6">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold">Obstacle Detection</h3>
+        <h3 className="text-lg font-semibold">{t('widgets.obstacle.title')}</h3>
         <Radar className={`h-5 w-5 ${isObstacleDetected ? 'text-destructive animate-pulse' : 'text-primary'}`} />
       </div>
       
@@ -54,12 +56,12 @@ export const ObstacleDetection = ({ distance }: ObstacleDetectionProps) => {
             {isObstacleDetected ? (
               <>
                 <AlertCircle className="h-3 w-3 mr-1" />
-                Obstacle Detected!
+                {t('widgets.obstacle.detected')}
               </>
             ) : (
               <>
                 <CheckCircle className="h-3 w-3 mr-1" />
-                Path Clear
+                {t('widgets.obstacle.clear')}
               </>
             )}
           </Badge>
@@ -67,7 +69,7 @@ export const ObstacleDetection = ({ distance }: ObstacleDetectionProps) => {
         
         {isObstacleDetected && (
           <div className="text-center text-xs text-destructive">
-            Robot stopped for safety
+            {t('widgets.obstacle.stopped')}
           </div>
         )}
       </div>
